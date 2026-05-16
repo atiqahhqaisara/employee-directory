@@ -52,13 +52,19 @@ function formatSalary(value) {
         </td>
 
         <td>
-          <span v-if="emp.active">
-            Active
-          </span>
+          <span
+  v-if="emp.active"
+  class="active-badge"
+>
+  Active
+</span>
 
-          <span v-else>
-            Inactive
-          </span>
+<span
+  v-else
+  class="inactive-badge"
+>
+  Inactive
+</span>
         </td>
 
         <td>

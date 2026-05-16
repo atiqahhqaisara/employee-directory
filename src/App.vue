@@ -105,48 +105,72 @@ onMounted(loadEmployees);
 
 <template>
 
-  <div>
+  <div class="container">
 
-    <h1>Employee Directory</h1>
+    <h1>
+      Employee Directory
+    </h1>
 
-    <div v-if="loading">
-      Loading...
+    <div
+      v-if="loading"
+      class="loading"
+    >
+      Loading employees...
     </div>
 
-    <div v-if="error">
+    <div
+      v-if="error"
+      class="error"
+    >
       {{ error }}
     </div>
 
-    <input
-      v-model="search"
-      placeholder="Search..."
-    >
+    <div class="card">
 
-    <select v-model="sortBy">
-      <option value="name">Name</option>
-      <option value="hireDate">Hire Date</option>
-      <option value="salary">Salary</option>
-    </select>
+      <div class="toolbar">
 
-    <select v-model="order">
-      <option value="asc">Ascending</option>
-      <option value="desc">Descending</option>
-    </select>
+        <input
+          v-model="search"
+          placeholder="Search employee..."
+        >
 
-    <button @click="loadEmployees">
-      Search / Sort
-    </button>
+        <select v-model="sortBy">
+          <option value="name">Name</option>
+          <option value="hireDate">Hire Date</option>
+          <option value="salary">Salary</option>
+        </select>
 
-    <EmployeeForm
-      :employee="selectedEmployee"
-      @save="saveEmployee"
-    />
+        <select v-model="order">
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
 
-    <EmployeeList
-      :employees="employees"
-      @edit="editEmployee"
-      @delete="deleteEmployee"
-    />
+        <button @click="loadEmployees">
+          Search
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <EmployeeForm
+        :employee="selectedEmployee"
+        @save="saveEmployee"
+      />
+
+    </div>
+
+    <div class="card">
+
+      <EmployeeList
+        :employees="employees"
+        @edit="editEmployee"
+        @delete="deleteEmployee"
+      />
+
+    </div>
 
   </div>
 

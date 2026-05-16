@@ -79,48 +79,70 @@ function submitForm() {
 
 <template>
 
-  <div class="form-container">
+  <div>
 
     <h2>Add / Edit Employee</h2>
 
-    <input v-model.trim="form.empId" placeholder="Employee ID">
-    <p>{{ errors.empId }}</p>
+    <div class="form-grid">
 
-    <input v-model.trim="form.name" placeholder="Name">
-    <p>{{ errors.name }}</p>
+      <div>
+        <input v-model.trim="form.empId" placeholder="Employee ID">
+        <p class="error">{{ errors.empId }}</p>
+      </div>
 
-    <input v-model.trim="form.email" placeholder="Email">
-    <p>{{ errors.email }}</p>
+      <div>
+        <input v-model.trim="form.name" placeholder="Name">
+        <p class="error">{{ errors.name }}</p>
+      </div>
 
-    <select v-model="form.department">
-      <option value="">Select Department</option>
-      <option>IT</option>
-      <option>HR</option>
-      <option>Finance</option>
-      <option>Marketing</option>
-      <option>Operations</option>
-    </select>
+      <div>
+        <input v-model.trim="form.email" placeholder="Email">
+        <p class="error">{{ errors.email }}</p>
+      </div>
 
-    <p>{{ errors.department }}</p>
+      <div>
+        <select v-model="form.department">
+          <option value="">Department</option>
+          <option>IT</option>
+          <option>HR</option>
+          <option>Finance</option>
+          <option>Marketing</option>
+          <option>Operations</option>
+        </select>
 
-    <input v-model.trim="form.position" placeholder="Position">
-    <p>{{ errors.position }}</p>
+        <p class="error">{{ errors.department }}</p>
+      </div>
 
-    <input type="date" v-model="form.hireDate">
-    <p>{{ errors.hireDate }}</p>
+      <div>
+        <input v-model.trim="form.position" placeholder="Position">
+        <p class="error">{{ errors.position }}</p>
+      </div>
 
-    <input
-      type="number"
-      v-model.number="form.salary"
-      placeholder="Salary"
-    >
+      <div>
+        <input type="date" v-model="form.hireDate">
+        <p class="error">{{ errors.hireDate }}</p>
+      </div>
 
-    <p>{{ errors.salary }}</p>
+      <div>
+        <input
+          type="number"
+          v-model.number="form.salary"
+          placeholder="Salary"
+        >
+
+        <p class="error">{{ errors.salary }}</p>
+      </div>
+
+    </div>
+
+    <br>
 
     <label>
       <input type="checkbox" v-model="form.active">
-      Active
+      Active Employee
     </label>
+
+    <br><br>
 
     <button @click="submitForm">
       Save Employee
